@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/HasseneFliss/hello-kubernetes.git
     targetRevision: HEAD
-    path: hello-kubernetes/yaml/hello-kubernetes.yaml
+    path: tree/main/yaml
     directory:
       recurse: true
   destination:
