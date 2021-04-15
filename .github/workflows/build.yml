@@ -42,17 +42,13 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
 
        - name: Set up Docker Buildx
-         id: buildx
-         uses: docker/setup-buildx-action@v1
+         run: | 
+            docker build .
+         
 
        - name: Build and push
-         id: docker_build
-         uses: docker/build-push-action@v2
-         with:
-           context: ./
-           file: ./Dockerfile
-           push: true
-           tags: hassenefl/hello-kubernetes:latest
+         run: | 
+            docker push hassenefl/hello-kubernetes:v1.0.0
 
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
