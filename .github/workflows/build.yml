@@ -44,10 +44,13 @@ jobs:
        - name: Set up Docker Buildx
          run: | 
             docker build .
-            
+             
        - name: Build and push
-         run: | 
-            docker push paulbouwer/hello-kubernetes:1.8
-            
+         id: docker_build
+         uses: docker/build-push-action@v2
+         with:
+           push: true
+           tags: paulbouwer/hello-kubernetes:1.8
+           
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
