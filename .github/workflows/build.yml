@@ -44,11 +44,10 @@ jobs:
        - name: Set up Docker Buildx
          run: | 
             docker build .
-         
-
+            
        - name: Build and push
          run: | 
-            docker push hassenefl/hello-kubernetes:v1.0.0
-
+            docker push paulbouwer/hello-kubernetes:1.8
+            
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
