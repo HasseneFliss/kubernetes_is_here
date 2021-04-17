@@ -1,2 +1,3 @@
 ressources:
- - yaml/hello-kubernetes.yaml
+ - service.yaml
+ - deployment.yaml
