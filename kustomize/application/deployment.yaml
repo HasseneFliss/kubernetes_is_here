@@ -1,5 +1,5 @@
-apiVersion: argoproj.io/v1alpha1 # Changed from apps/v1
-kind: Rollout # Changed from Deployment
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: hello-kubernetes
   labels: 
@@ -22,18 +22,3 @@ spec:
         env:
         - name: MESSAGE
           value: Hey I just changed it successfully to mine
-  strategy:
-      canary:
-        analysis:
-          templates:
-          - templateName: webcheck
-        args:
-        - name: host
-          value: hello-kubernetes
-        steps:
-        - setWeight: 20
-        - pause:
-            duration: "30s"
-        - setWeight: 50
-        - pause:
-            duration: "30s"
