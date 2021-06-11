@@ -4,18 +4,18 @@ metadata:
   name: hello-kubernetes
   labels: 
       name: hello-kubernetes
-strategy:
-    canary:
-      analysis:
-        templates:
-        - templateName: webcheck
-      args:
-      - name: host
-        value: hello-kubernetes
-      steps:
-      - setWeight: 20
-      - pause:
-          duration: "30s"
-      - setWeight: 50
-      - pause:
-          duration: "30s"
+  strategy:
+      canary:
+        analysis:
+          templates:
+          - templateName: webcheck
+        args:
+        - name: host
+          value: hello-kubernetes
+        steps:
+        - setWeight: 20
+        - pause:
+            duration: "30s"
+        - setWeight: 50
+        - pause:
+            duration: "30s"
