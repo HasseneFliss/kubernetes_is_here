@@ -89,7 +89,7 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:latest
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:$TAG
            build-args: |
                         TAG=${{ env.TAG }}
            
