@@ -51,7 +51,7 @@ jobs:
          if: contains(github.ref, 'feature')
          run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
               
-       - name: What
+       - name: 
          if: contains(github.ref, 'tag')
          run: echo "BRANCH= `echo ${GITHUB_REF##*/}| cut -c1-8`" >> $GITHUB_ENV
           
@@ -84,9 +84,9 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.BRANCH }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:S-${{ env.SHORT_SHA }}
            build-args: |
-                        BRANCH=${{ env.BRANCH }}
+                        SHORT_SHA=${{ env.SHORT_SHA }}
            
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
