@@ -75,7 +75,6 @@ jobs:
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
 
-           
 
        - name: build and push stg
          if: contains(github.ref, 'tag')
