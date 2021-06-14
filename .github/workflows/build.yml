@@ -10,6 +10,7 @@ on:
       - master
       - feature
       - tag/v
+      - 'mona/octocat'
   pull_request:
     branches: [ main ]
 
