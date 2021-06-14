@@ -65,7 +65,6 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           if: contains(github.ref, 'feature')
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${SHORT_SHA}
            
 
