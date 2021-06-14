@@ -65,7 +65,7 @@ jobs:
          run: echo ${{github.ref}}
 
        - name: echo gitenv
-         run: echo ${{GITHUB_ENV}
+         run: echo $GITHUB_ENV
              
        - name: Build and push dev
          if: contains(github.ref, 'feature')
