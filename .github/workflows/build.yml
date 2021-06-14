@@ -83,9 +83,9 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.SHORT_SHA }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.BRANCH }}
            build-args: |
-                        SHORT_SHA=${{ env.SHORT_SHA }}
+                        BRANCH=${{ env.BRANCH }}
            
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
