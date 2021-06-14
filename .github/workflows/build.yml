@@ -47,7 +47,8 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
 
        - name: set github sha
-         run: echo ${{env.GITHUB_SHA}}
+         run: 
+          sha= echo ${{env.GITHUB_SHA}} | cut -c 1-10`
 
        - name: Set up Docker Buildx
          run: | 
