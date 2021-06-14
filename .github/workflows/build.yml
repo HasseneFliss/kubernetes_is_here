@@ -48,10 +48,12 @@ jobs:
 
        
        - name: Add SHORT_SHA env property with commit short sha
+         if: contains(github.ref, 'feature')
          run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-      
+              
        - name: What
-         run: echo "BRANCH= `echo ${GITHUB_REF##*/}| cut -c1-8`" >> $GITHUB_ENV2
+         if: contains(github.ref, 'tag')
+         run: echo "BRANCH= `echo ${GITHUB_REF##*/}| cut -c1-8`" >> $GITHUB_ENV
           
 
        - name: Set up Docker Buildx
@@ -82,9 +84,9 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.$GITHUB_ENV2 }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.$BRANCH }}
            build-args: |
-                        GITHUB_ENV2=${{ env.GITHUB_ENV2 }}
+                        BRANCH=${{ env.BRANCH }}
            
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
