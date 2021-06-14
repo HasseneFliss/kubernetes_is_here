@@ -48,7 +48,7 @@ jobs:
 
        - name: set github sha
          run: 
-          sha= echo ${{env.GITHUB_SHA}} | cut -c 1-10`
+          sha= echo ${{env.github.sha}} | cut -c 1-10`
 
        - name: Set up Docker Buildx
          run: | 
@@ -65,11 +65,13 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
+           if: contains(github.ref, 'feature')
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:$sha
+           
 
        - name: build and push stg
          if: contains(github.ref, 'master')
-         id: docker_build
+         id: docker_build-2
          uses: docker/build-push-action@v2
          with:
            context: ./
