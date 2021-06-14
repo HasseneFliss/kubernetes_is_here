@@ -52,7 +52,7 @@ jobs:
          run: echo ${{github.ref}}
              
        - name: Build and push
-         if: github.ref == 'refs/heads/feature/**' 
+         if: github.ref == 'refs/heads/feature/testgit3' 
          id: docker_build
          uses: docker/build-push-action@v2
          with:
