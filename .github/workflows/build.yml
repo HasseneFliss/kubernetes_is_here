@@ -10,6 +10,7 @@ on:
       - master
       - 'tag/**'
       - 'feature/**'
+      
   pull_request:
     branches: [ master ]
 
@@ -33,7 +34,7 @@ jobs:
        - run: npm install
        - run: npm run
        - run: npm test
-       
+
       
        - name: Check Out Repo 
          uses: actions/checkout@v2
