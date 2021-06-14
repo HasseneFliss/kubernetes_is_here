@@ -49,7 +49,7 @@ jobs:
        
        - name: Add SHORT_SHA env property with commit short sha
          if: contains(github.ref, 'feature')
-         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c 1-10`" >> $GITHUB_ENV
+         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
               
        - name:  set name
          if: contains(github.ref, 'tag')
@@ -64,7 +64,7 @@ jobs:
          run: echo ${{github.ref}}
              
        - name: Build and push dev
-         if: contains(github.ref, 'refs/heads/')
+         if: contains(github.ref, 'feature')
          id: docker_build
          uses: docker/build-push-action@v2
          with:
@@ -74,12 +74,11 @@ jobs:
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.SHORT_SHA }}
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
-                        
 
 
 
        - name: build and push stg
-         if: contains(github.ref, 'refs/tag/')
+         if: contains(github.ref, 'tag')
          id: docker_build-2
          uses: docker/build-push-action@v2
          with:
