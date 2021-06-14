@@ -75,7 +75,7 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:staging
            
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
