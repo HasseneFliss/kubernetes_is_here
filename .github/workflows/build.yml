@@ -65,7 +65,7 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${GITHUB_ENV}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:$(GITHUB_ENV)
            
 
        - name: build and push stg
