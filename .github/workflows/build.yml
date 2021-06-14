@@ -74,6 +74,7 @@ jobs:
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.SHORT_SHA }}
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
+                        
 
 
 
