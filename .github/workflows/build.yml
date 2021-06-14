@@ -8,11 +8,10 @@ on:
   push:
     branches:
       - master
-      - feature
-      - tag/v
+      - 'tag/**'
       - 'feature/**'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -50,6 +49,7 @@ jobs:
             docker build .
              
        - name: Build and push
+         if: ${{ github.event_name == 'branches' && github.event.action == 'feature/**' }}
          id: docker_build
          uses: docker/build-push-action@v2
          with:
