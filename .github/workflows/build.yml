@@ -10,7 +10,6 @@ on:
       - master
       - feature
       - tag/v
-      
   pull_request:
     branches: [ main ]
 
