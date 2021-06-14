@@ -48,7 +48,7 @@ jobs:
 
        - name: set github sha
          run: 
-          sha= echo ${{env.github.sha}} | cut -c 1-10`
+          sha= echo ${{env.github.sha}} | cut -c 1-10
 
        - name: Set up Docker Buildx
          run: | 
