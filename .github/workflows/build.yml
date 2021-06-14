@@ -54,7 +54,7 @@ jobs:
        - name:  set name
          if: contains(github.ref, 'tag')
          run: echo "TAG= `echo ${GITHUB_REF}| cut -c 16-`" >> $GITHUB_ENV
-              echo $GITHUB_ENV
+              
           
        - name: Set up Docker Buildx
          run: | 
@@ -63,6 +63,9 @@ jobs:
 
        - name: see ref name
          run: echo ${{github.ref}}
+
+       - name: echo gitenv
+         run: echo ${{GITHUB_ENV}
              
        - name: Build and push dev
          if: contains(github.ref, 'feature')
