@@ -49,6 +49,7 @@ jobs:
        
        - name: Add SHORT_SHA env property with commit short sha
          run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+          sha=$GITHUB_ENV
 
        - name: Set up Docker Buildx
          run: | 
@@ -65,7 +66,7 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:'${SHORT_SHA}'
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes: '${sha}'
            
 
        - name: build and push stg
@@ -76,7 +77,7 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:staging
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes: staging
            
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
