@@ -84,7 +84,7 @@ jobs:
            context: ./
            file: ./Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.$BRANCH }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.BRANCH }}
            build-args: |
                         BRANCH=${{ env.BRANCH }}
            
