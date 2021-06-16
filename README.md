@@ -2,7 +2,7 @@
 User of Argocd in webpage: admin
 password: name of server pod
 
-enable autosync
+enable autosync 
 
 [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/paulbouwer/hello-kubernetes)](https://hub.docker.com/repository/docker/paulbouwer/hello-kubernetes) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/paulbouwer/hello-kubernetes)](https://hub.docker.com/repository/docker/paulbouwer/hello-kubernetes) [![Docker Pulls](https://img.shields.io/docker/pulls/paulbouwer/hello-kubernetes)](https://hub.docker.com/repository/docker/paulbouwer/hello-kubernetes)
 
