@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: hello-kubernetes
+spec:
+  replicas: 1
+  strategy:
+    canary:
+      canaryService: hello-kubernetes-canary
+      stableService: hello-kubernetes-stable
+      trafficRouting:
+        nginx:
+          stableIngress: hello-kubernetes-stable
+      steps:
+      - setWeight: 5
+      - pause: {}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: hello-kubernetes
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes
+    spec:
+      containers:
+      - name: hello-kubernetes
+        image: hassenefl/hello-kubernetes:latest
+        env:
+        - name: MESSAGE
+          value: Hey I just changed it successfully to mine
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
