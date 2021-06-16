@@ -22,6 +22,8 @@ spec:
       - setWeight: 100
       - pause: {duration: 10}
   revisionHistoryLimit: 2
+  progressDeadlineSeconds: 50
+
   selector:
     matchLabels:
       app: hello-kubernetes
