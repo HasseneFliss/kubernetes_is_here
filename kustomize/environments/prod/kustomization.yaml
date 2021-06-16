@@ -2,3 +2,5 @@ bases:
   - ../../application
 patches:
   - replica_count.yaml
+  - rollout-patch.yaml
+

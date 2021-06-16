@@ -4,5 +4,5 @@ metadata:
   name: hello-kubernetes
   labels: 
       name: hello-kubernetes
-spec:
-  replicas: 5
+  spec:
+    replicas: 5
