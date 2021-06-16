@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: hello-kubernetes-stable
 spec:
-  type: LoadBalancer
   ports:
   - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
   selector:
     app: hello-kubernetes
 ---
