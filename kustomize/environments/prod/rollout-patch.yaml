@@ -3,7 +3,6 @@ kind: Rollout
 metadata:
   name: hello-kubernetes
 spec:
-  replicas: 1
   strategy:
     canary:
       canaryService: hello-kubernetes-canary
