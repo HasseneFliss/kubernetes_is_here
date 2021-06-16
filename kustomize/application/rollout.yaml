@@ -30,7 +30,7 @@ spec:
       labels:
         app: hello-kubernetes
     spec:
-      containers:
+      containers: 
       - name: hello-kubernetes
         image: hassenefl/hello-kubernetes:latest
         env:
