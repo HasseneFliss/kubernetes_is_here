@@ -12,8 +12,12 @@ spec:
         nginx:
           stableIngress: hello-kubernetes-stable
       steps:
-      - setWeight: 5
-      - pause: {}
+      - setWeight: 30
+      - pause: {duration: 30s}
+      - setWeight: 60
+      - pause: {duration: 30s}
+      - setWeight: 100
+      - pause: {duration: 10}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
