@@ -32,7 +32,7 @@ spec:
       labels:
         app: hello-kubernetes
     spec:
-      containers:
+      containers: 
       - name: hello-kubernetes
         image: hassenefl/hello-kubernetes:12w8c653
         env:
