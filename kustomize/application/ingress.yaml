@@ -6,13 +6,11 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: foo.bar.com
+  - host: hello-kubernetes.url
     http:
       paths:
-      - path: /v1
-        pathType: Prefix
+      - path: /
         backend:
-          service:
-            name: hello-kubernetes-stable
-            port:
-              number: 80
+          # Reference to a Service name, also specified in the Rollout spec.strategy.canary.stableService field
+          serviceName: hello-kubernetes-stable
+          servicePort: 80
