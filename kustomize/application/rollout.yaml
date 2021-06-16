@@ -7,7 +7,7 @@ spec:
   strategy:
     canary:
       canaryService: hello-kubernetes-canary
-      stableService: hello-kubernetes-stable
+      stableService: hello-kubernetes-stable 
       trafficRouting:
         nginx:
           stableIngress: hello-kubernetes-stable
