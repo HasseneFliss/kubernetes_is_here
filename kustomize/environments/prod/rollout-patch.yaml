@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: hello-kubernetes
+spec:
+  strategy:
+    canary:
+      canaryService: hello-kubernetes-canary
+      stableService: hello-kubernetes-stable
+      trafficRouting:
+        nginx:
+          stableIngress: hello-kubernetes-stable
+      steps:
+      - setWeight: 5
+      - pause: {}
+  revisionHistoryLimit: 2
+ 

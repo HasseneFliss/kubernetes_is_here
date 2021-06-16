@@ -1,4 +1,5 @@
-bases:
+ bases:
   - ../../application
-patches:
-  - replica_count.yaml
+ patches:
+  - rollout-patch.yaml
+
