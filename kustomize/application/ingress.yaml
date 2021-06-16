@@ -13,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: hello-kubernetes-canary
+            name: hello-kubernetes-stable
             port:
               number: 80
