@@ -2,9 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: hello-kubernetes 
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: "hassenefl/hello-kubernetes"
-    argocd-image-updater.argoproj.io/write-back-method: git
 spec:
   replicas: 1
   strategy:
@@ -23,7 +20,6 @@ spec:
       - pause: {duration: 10}
   revisionHistoryLimit: 2
   progressDeadlineSeconds: 50
-
   selector:
     matchLabels:
       app: hello-kubernetes
@@ -34,7 +30,7 @@ spec:
     spec:
       containers: 
       - name: hello-kubernetes
-        image: paulbouwer/hello-kubernetes:1.9
+        image: hassenefl/hello-kubernetes:latest
         env:
         - name: MESSAGE
           value: Hey I just changed it successfully to mine
