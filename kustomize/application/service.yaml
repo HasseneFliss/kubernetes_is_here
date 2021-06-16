@@ -4,8 +4,9 @@ metadata:
   name: hello-kubernetes-stable
 spec:
   type: ClusterIP
-  ports:
-  - port: 80
+  ports: 
+  - name: http
+    port: 80
   selector:
     app: hello-kubernetes
 ---
