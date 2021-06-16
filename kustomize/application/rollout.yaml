@@ -30,7 +30,7 @@ spec:
     spec:
       containers: 
       - name: hello-kubernetes
-        image: aulbouwer/hello-kubernetes:1.9
+        image: paulbouwer/hello-kubernetes:1.9
         env:
         - name: MESSAGE
           value: Hey I just changed it successfully to mine
