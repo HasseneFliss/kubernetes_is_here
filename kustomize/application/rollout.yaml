@@ -2,6 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: hello-kubernetes 
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: "hassenefl/hello-kubernetes"
+    argocd-image-updater.argoproj.io/write-back-method: git
 spec:
   replicas: 1
   strategy:
