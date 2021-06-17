@@ -16,5 +16,6 @@
     "pino": "^6.11.2"
   },
   "devDependencies": {},
+  "keywords": [],
   "description": ""
 }
