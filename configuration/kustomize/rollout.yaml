@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: hello-kubernetes 
-spec:  
+spec:   
   replicas: 1 
   strategy:
     canary:
