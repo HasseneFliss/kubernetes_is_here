@@ -72,8 +72,8 @@ jobs:
          id: docker_build
          uses: docker/build-push-action@v2
          with:
-           context: ./
-           file: ./application/Dockerfile
+           context: ./application
+           file: Dockerfile
            push: true
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.SHORT_SHA }}
            build-args: |
@@ -87,7 +87,7 @@ jobs:
          uses: docker/build-push-action@v2
          with:
            context: ./application
-           file: ./application/Dockerfile
+           file: Dockerfile
            push: true
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:latest
            build-args: |
