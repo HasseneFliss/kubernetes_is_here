@@ -40,12 +40,7 @@ jobs:
          
        - name: directory run
          run: ls -la
-       
-  
-         
-       
 
-      
        - name: Check Out Repo 
          uses: actions/checkout@v2
 
@@ -106,3 +101,5 @@ jobs:
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
 
+       - name: directory run
+         run: ls -la
