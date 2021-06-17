@@ -103,3 +103,20 @@ jobs:
 
        - name: directory run
          run: ls -la
+         
+       - uses: actions/checkout@v1
+
+       - uses: actions/setup-node@v1
+
+       - name: Fetch resources
+         run: ./scripts/fetch-resources.sh
+
+       - name: Update resources
+         uses: test-room-7/action-update-file@v1
+         with:
+                  file-path: configuration/kustomize/rollout.yaml
+                  commit-msg: Update resources
+                  github-token: ${{ secrets.GITHUBTOKEN }}
+         run:
+          sed -i 's/hassenefl/hello-kubernetes:latest/hassenefl/hello-kubernetes:${{ env.SHORT_SHA }}/g' rollout.yaml
+       
