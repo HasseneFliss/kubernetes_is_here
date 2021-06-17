@@ -37,8 +37,15 @@ jobs:
        - run: npm install express-pino-logger
        - run: npm install pino
        - run: npm install handlebars
+         
+       - name: directory run
+         run: ls -la
+       
+       - name: npm check
          working-directory: ./application
-       - run: npm start
+         run: npm start
+         
+       
 
       
        - name: Check Out Repo 
