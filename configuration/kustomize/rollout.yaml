@@ -24,7 +24,7 @@ spec:
     matchLabels:
       app: hello-kubernetes
   template:
-    metadata:
+    metadata: 
       labels:
         app: hello-kubernetes
     spec:
