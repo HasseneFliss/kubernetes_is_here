@@ -21,12 +21,12 @@ LABEL org.opencontainers.image.title="Hello Kubernetes!" \
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Install app dependencies
+# copy from where the package.json is located (check ls-la in the pipeline)
 COPY ./application/package*.json ./
 RUN npm install
 
 
-# Bundle app source
+# copy everything under application folder to the current folder urs/src/app
 COPY ./application .
 EXPOSE 8080
 USER node
