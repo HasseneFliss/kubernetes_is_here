@@ -26,7 +26,7 @@ COPY . /usr/src/app/
 RUN npm install
 
 # Bundle app source
-COPY . /usr/src/app
+COPY ./application /usr/src/app
 
 USER node
 CMD [ "npm", "start" ]
