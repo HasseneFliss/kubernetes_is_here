@@ -22,12 +22,12 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY . /usr/src/app/
+COPY package*.json ./
 RUN npm install
-RUN npm start
+
 
 # Bundle app source
-COPY . /usr/src/app
+COPY . .
 EXPOSE 8080
 USER node
 CMD [ "npm", "start" ]
