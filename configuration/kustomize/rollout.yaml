@@ -6,7 +6,7 @@ spec:
   replicas: 1 
   strategy:
     canary:
-      canaryService: hello-kubernetes-canary 
+      canaryService: hello-kubernetes-canary  
       stableService: hello-kubernetes-stable 
       trafficRouting:
         nginx:
