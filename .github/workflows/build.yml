@@ -33,6 +33,10 @@ jobs:
           node-version: '12.x'
        - run: npm install
        - run: npm install express
+       - run: npm install express-handlebars
+       - run: npm install express-pino-logger
+       - run: npm install pino
+       - run: npm install handlebars
        - run: npm run
        #- run: npm test
 
