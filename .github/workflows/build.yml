@@ -86,7 +86,7 @@ jobs:
          id: docker_build-2
          uses: docker/build-push-action@v2
          with:
-           context: ./application
+           context: ./
            file: ./application/Dockerfile
            push: true
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:latest
