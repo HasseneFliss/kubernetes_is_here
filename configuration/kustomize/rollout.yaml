@@ -30,7 +30,7 @@ spec:
     spec:
       containers: 
       - name: hello-kubernetes
-        image: hassenefl/hello-kubernetes:c339232e  
+        image: docker.io/hassenefl/hello-kubernetes:c339232e  
         env:
         - name: MESSAGE
           value: Hey I just changed it successfully to mine
