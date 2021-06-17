@@ -31,6 +31,7 @@ jobs:
          uses: actions/setup-node@v1
          with:
           node-version: '12.x'
+       - run: npm init
        - run: npm install
        - run: npm run
        - run: npm test
@@ -73,7 +74,7 @@ jobs:
          uses: docker/build-push-action@v2
          with:
            context: ./
-           file: ./Dockerfile
+           file: ./application/Dockerfile
            push: true
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.SHORT_SHA }}
            build-args: |
@@ -86,8 +87,8 @@ jobs:
          id: docker_build-2
          uses: docker/build-push-action@v2
          with:
-           context: ./
-           file: ./Dockerfile
+           context: ./application
+           file: ./application/Dockerfile
            push: true
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:latest
            build-args: |
