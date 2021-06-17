@@ -41,9 +41,7 @@ jobs:
        - name: directory run
          run: ls -la
        
-       - name: npm check
-         working-directory: ./application
-         run: npm start
+  
          
        
 
