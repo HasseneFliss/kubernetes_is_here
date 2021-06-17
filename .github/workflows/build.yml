@@ -32,6 +32,7 @@ jobs:
          with:
           node-version: '12.x'
        - run: npm install
+       - run: npm install express
        - run: npm run
        #- run: npm test
 
