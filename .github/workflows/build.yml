@@ -58,7 +58,7 @@ jobs:
        
        - name: Set up Docker Buildx
          run: | 
-            docker build . -f application/Dockerfile
+            docker build . -f application/app/Dockerfile
 
 
        - name: see ref name
