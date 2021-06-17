@@ -106,3 +106,17 @@ jobs:
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
 
+       - name: change directory
+         run: cd configuration
+
+       - name: Nix Shell
+         uses: workflow/nix-shell-action@v1
+         with:
+            # Interpreter to use in the nix shell shebang
+           interpreter: bash
+           packages: bash
+            # The actual script to execute in the shell
+           script: 
+              sed -i 's/hassenefl/hello-kubernetes:latest/hassenefl/hello-kubernetes:${{ env.SHORT_SHA }}/g' rollout.yaml
+
+
