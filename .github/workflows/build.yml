@@ -62,7 +62,7 @@ jobs:
 
 
        - name: see ref name
-         run: echo ${{github.ref}}
+         run: echo ${{github.ref}} 
 
        - name: see ref name
          run: echo $GITHUB_ENV
