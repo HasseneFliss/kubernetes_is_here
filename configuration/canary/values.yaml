@@ -14,8 +14,8 @@ name: hello-kubernetes
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
-  # Overrides the image  tag: 850a3c18f9e56adb640350b3e5122dcbc817f4a6 68f22862666ce2c6ffda4dbacc129bc6d9c452d6 whose default is the chart appVersion.
-  tag: 850a3c18f9e56adb640350b3e5122dcbc817f4a6
+  # Overrides the image  tag: 6adeaa2b7f739bb46a670f537021e4817f0e7aa3 850a3c18f9e56adb640350b3e5122dcbc817f4a6 68f22862666ce2c6ffda4dbacc129bc6d9c452d6 whose default is the chart appVersion.
+  tag: 6adeaa2b7f739bb46a670f537021e4817f0e7aa3 850a3c18f9e56adb640350b3e5122dcbc817f4a6
 
 imagePullSecrets: []
 nameOverride: ""
