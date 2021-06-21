@@ -103,5 +103,5 @@ jobs:
 
        - name: directory run
          run: ls -la
-         
+              cd configuration
        
