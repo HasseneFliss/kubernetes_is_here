@@ -6,8 +6,8 @@ spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
     canary:
-      canaryService: hello-kubernetes-canary 
-      stableService: hello-kubernetes-stable 
+      canaryService: hello-kubernetes-canary-test 
+      stableService: hello-kubernetes-stable-test
       trafficRouting:
         nginx:
           stableIngress: {{ .Values.service.name1 }}

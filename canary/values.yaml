@@ -6,8 +6,8 @@ replicaCount: 1
 
 strategy:
   canary:
-    canaryService: hello-kubernetes-canary
-    stableService: hello-kubernetes-stable
+    canaryService: hello-kubernetes-canary-test
+    stableService: hello-kubernetes-stable-test
 
 image:
   repository: hassenefl/hello-kubernetes
