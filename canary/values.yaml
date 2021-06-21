@@ -43,8 +43,9 @@ securityContext: {}
 
 service:
   name1: hello-kubernetes-stable-test
+  type1: LoadBalancer
   name2: hello-kubernetes-canary-test
-  type: LoadBalancer
+  type2: ClusterIP
   port: 80
 
 ingress:

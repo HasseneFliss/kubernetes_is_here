@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.service.name1 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.type1 }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
@@ -19,7 +19,7 @@ metadata:
   labels:
     {{- include "canary.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.type2 }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
