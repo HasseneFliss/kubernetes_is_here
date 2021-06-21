@@ -111,7 +111,7 @@ jobs:
        - name: Find and Replace
          uses: jacobtomlinson/gha-find-replace@master
          with:
-            find: "tag:"
+            find: "tag:c339232e"
             replace: "tag:${{ env.TAG }}"
             include: "values.yaml"
 
