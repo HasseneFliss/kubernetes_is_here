@@ -108,7 +108,7 @@ jobs:
          run: cat configuration/canary/values.yaml
 
        - name: Replace image in config
-         uses: ./.github/actions/replace
+         uses: ./.github/workflows/build
          with:
             files: configuration/canary/values.yaml
             replacements: 'tag= test1'
