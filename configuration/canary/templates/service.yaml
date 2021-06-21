@@ -10,7 +10,7 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "canary.selectorLabels" . | nindent 4 }}
+    {{Chart.name }}
 ---
 apiVersion: v1
 kind: Service
