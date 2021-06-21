@@ -83,7 +83,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.SHORT_SHA }}
+           tags: hassenefl/hello-kubernetes:${{ env.SHORT_SHA }}
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
 
