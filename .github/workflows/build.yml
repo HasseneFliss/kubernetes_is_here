@@ -104,6 +104,9 @@ jobs:
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
 
+       - name: show github SHA
+         run: cat ${github.sha}
+
        - name: ls
          run: ls -la
 
