@@ -10,7 +10,7 @@ spec:
       stableService: hello-kubernetes-stable-test
       trafficRouting:
         nginx:
-          stableIngress: {{ .Values.service.name }}
+          stableIngress: {{ .Values.ingress.name }}
       steps:
       - setWeight: 30
       - pause: {duration: 30s}
