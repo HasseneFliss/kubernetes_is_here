@@ -108,7 +108,7 @@ jobs:
          run: cat configuration/canary/values.yaml
 
        - name: Replace image in config
-         run: sed -i -e "s/tag/'tag:${{ env.SHORT_SHA }}'/g" configuration/canary/values.yaml
+         run: sed -i -e "s/c339232e/tag:$SHORT_SHA/g" configuration/canary/values.yaml
 
        - name: ls stage
          run: cat configuration/canary/values.yaml
@@ -117,8 +117,8 @@ jobs:
          run: |
           echo "Test push commit to the remote in the workflow" >> test.txt
 
-          git config --global user.name ""
-          git config --global user.email ""
+          git config --global user.name "HasseneFliss"
+          git config --global user.email "hassene.fliss25@gmail.com"
 
           git add -A
           git commit -m "Update test.txt"
