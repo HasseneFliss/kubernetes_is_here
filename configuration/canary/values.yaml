@@ -15,7 +15,7 @@ image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
+  8cd2da317c3fa797d1b7304c5a1b7074e1873268 latest
 
 imagePullSecrets: []
 nameOverride: ""
