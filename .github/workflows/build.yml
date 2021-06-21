@@ -83,7 +83,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: hassenefl/hello-kubernetes:${{ env.SHORT_SHA }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
 
@@ -97,7 +97,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.TAG }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}
            build-args: |
                         TAG={{ env.SHORT_SHA }}
            
@@ -111,7 +111,7 @@ jobs:
          run: cat configuration/canary/values.yaml
 
        - name: Replace image in config
-         run: sed -i -e "s/"c339232e"/"${{ github.sha }}"/g" configuration/canary/values.yaml
+         run: sed -i -e "s/\btag:/"${{ github.sha }}"/g" configuration/canary/values.yaml
 
        - name: ls stage
          run: cat configuration/canary/values.yaml
