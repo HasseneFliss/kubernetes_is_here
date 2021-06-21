@@ -93,7 +93,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.TAG}}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.TAG }}
            build-args: |
                         TAG={{ env.SHORT_SHA }}
            
