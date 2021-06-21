@@ -54,12 +54,15 @@ jobs:
        
        - name: Add SHORT_SHA env property with commit short sha
          if: contains(github.ref, 'feature')
-         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV_feature
+         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+              tagfeature= $GITHUB_ENV
+              cat $GITHUB_ENV
               
        - name:  set name
          if: contains(github.ref, 'master')
-         run: echo "TAG= `echo ${GITHUB_REF}| cut -c 16-`" >> $GITHUB_ENV_master
-              
+         run: echo "TAG= `echo ${GITHUB_REF}| cut -c 16-`" >> $GITHUB_ENV
+              tagmaster= $GITHUB_ENV
+              cat $GITHUB_ENV
        
        - name: Set up Docker Buildx
          run: | 
