@@ -94,7 +94,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:{{ env.SHORT_SHA }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:test1
            build-args: |
                         TAG={{ env.SHORT_SHA }}
            
@@ -114,4 +114,7 @@ jobs:
             find: "tag:"
             replace: "tag:${{ env.TAG }}"
             include: "configuration/canary/values.yaml"
+
+       - name: ls stage
+         run: cat configuration/canary/values.yaml
        
