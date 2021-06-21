@@ -42,8 +42,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  name1: hello-kubernetes-stable
-  name2: hello-kubernetes-canary
+  name1: hello-kubernetes-stable-test
+  name2: hello-kubernetes-canary-test
   type: LoadBalancer
   port: 80
 
