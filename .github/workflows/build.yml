@@ -108,11 +108,10 @@ jobs:
          run: ls -la
 
        - name: ls stage
-         run: cat configuration/canary/values.yaml 
+         run: cat configuration/canary/values.yaml
 
        - name: Replace image in config
-         run: sed -i -e "s/tag:[^ ]*/tag:"${{ github.sha }}"/g" configuration/canary/values.yaml 
-         
+         run: sed -i -e "s/^tag .*$/tag:"${{ github.sha }}"/g" configuration/canary/values.yaml
 
        - name: ls stage 
          run: cat configuration/canary/values.yaml
