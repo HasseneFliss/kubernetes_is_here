@@ -113,7 +113,7 @@ jobs:
          with:
             find: "tag:"
             replace: "tag:${{ env.TAG }}"
-            include: "configuration/canary/values.yaml"
+            include: "values.yaml"
 
        - name: ls stage
          run: cat configuration/canary/values.yaml
