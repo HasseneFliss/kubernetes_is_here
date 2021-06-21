@@ -97,4 +97,6 @@ jobs:
 
        - name: directory run
          run: ls -la
+              cd configuration/canary
+              cat values.yaml
          
