@@ -107,13 +107,11 @@ jobs:
        - name: ls stage
          run: cat configuration/canary/values.yaml
 
-       - uses: actions/checkout@v2
-       - name: Find and Replace
-         uses: jacobtomlinson/gha-find-replace@master
+       - name: Replace image in config
+         uses: ./.github/actions/replace
          with:
-            find: "tag:c339232e"
-            replace: "tag:${{ env.TAG }}"
-            include: "values.yaml"
+            files: configuration/canary/values.yaml
+            replacements: 'tag= test1'
 
        - name: ls stage
          run: cat configuration/canary/values.yaml
