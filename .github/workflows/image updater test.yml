@@ -95,8 +95,11 @@ jobs:
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
 
-       - name: directory run
+       - name: check directory
          run: ls -la
+       - name: cd in helm directory
               cd configuration/canary
+       - name: cat file
               cat values.yaml
+              
          
