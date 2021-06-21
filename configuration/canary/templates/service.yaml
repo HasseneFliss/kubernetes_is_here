@@ -10,14 +10,12 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{Chart.name }}
+    app: {{ .Values.name }}
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.service.name2 }}
-  labels:
-    {{- include "canary.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type2 }}
   ports:
@@ -26,4 +24,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "canary.selectorLabels" . | nindent 4 }}
+    app: {{ .Values.name }}

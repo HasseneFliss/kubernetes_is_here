@@ -9,6 +9,8 @@ strategy:
     canaryService: hello-kubernetes-canary-test
     stableService: hello-kubernetes-stable-test
 
+name: hello-kubernetes
+
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
