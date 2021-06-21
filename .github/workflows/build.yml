@@ -94,7 +94,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:latest
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.TAG }}
            build-args: |
                         TAG=${{ env.TAG }} 
            
@@ -106,4 +106,12 @@ jobs:
 
        - name: ls stage
          run: cat configuration/canary/values.yaml
+
+       - uses: actions/checkout@v2
+       - name: Find and Replace
+         uses: jacobtomlinson/gha-find-replace@master
+         with:
+            find: "tag:"
+            replace: "tag:${{ env.TAG }}"
+            include: "configuration/canary/values.yaml"
        
