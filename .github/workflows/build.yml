@@ -55,14 +55,10 @@ jobs:
        - name: Add SHORT_SHA env property with commit short sha
          if: contains(github.ref, 'feature')
          run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-              tagfeature= $GITHUB_ENV
-              cat $GITHUB_ENV
               
        - name:  set name
          if: contains(github.ref, 'master')
          run: echo "TAG= `echo ${GITHUB_REF}| cut -c 16-`" >> $GITHUB_ENV
-              tagmaster= $GITHUB_ENV
-              cat $GITHUB_ENV
        
        - name: Set up Docker Buildx
          run: | 
@@ -83,7 +79,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ env.SHORT_SHA }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:$SHORT_SHA
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
 
@@ -97,7 +93,7 @@ jobs:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:$tagmaster
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:$TAG
            build-args: |
                         TAG={{ env.SHORT_SHA }}
            
