@@ -60,7 +60,7 @@ jobs:
               
        - name:  set name
          if: contains(github.ref, 'master')
-         run: echo "TAG= `echo ${GITHUB_REF}| cut -c 16-`" >> $GITHUB_ENV
+         run: echo "TAG= `echo ${GITHUB_SHA}| cut -c 8-`" >> $GITHUB_ENV
        - name: see tag
          run: cat $GITHUB_ENV
        
