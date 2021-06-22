@@ -10,7 +10,7 @@ spec:
   - host: hello-kubernetes.com
     http:
       paths:
-      - path: /test
+      - path:
         backend:
           serviceName: {{ .Values.service.name1 }}
           servicePort: {{ .Values.service.port }}
