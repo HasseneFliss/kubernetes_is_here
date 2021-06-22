@@ -6,9 +6,6 @@ spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
     canary:
-      analysis:
-        templates:
-        - templateName: webcheck
       canaryService: hello-kubernetes-canary-test 
       stableService: hello-kubernetes-stable-test
       trafficRouting:
@@ -43,21 +40,3 @@ spec:
               containerPort: 8080
               protocol: TCP
       
----
-apiVersion: argoproj.io/v1alpha1
-kind: AnalysisTemplate
-metadata:
-  name: webcheck
-spec:
-  args:
-  - name: hello-kubernetes
-  metrics:
-  - name: webcheck
-    failureLimit: 1
-    interval: "3"
-    successCondition: result == "ok"
-    provider:
-      web:
-        # paceholders are resolved when an AnalysisRun is created
-        url: "http://{{args.host}}/"
-        jsonPath: "{$.status}"
