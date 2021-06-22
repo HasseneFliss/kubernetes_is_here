@@ -4,9 +4,6 @@ metadata:
   name: hello-kubernetes
 spec:
   replicas: {{ .Values.replicaCount }}
-  args:
-  - name: host
-    value: hello-kubernetes
   strategy:
     canary:
       analysis:
