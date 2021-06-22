@@ -6,17 +6,17 @@ spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
     canary:
-      canaryService: hello-kubernetes-canary-test 
-      stableService: hello-kubernetes-stable-test
-      trafficRouting:
-        nginx:
-          stableIngress: {{ .Values.ingress.name }}
       analysis:
         templates:
         - templateName: webcheck
       args:
       - name: host
         value: hello-kubernetes
+      canaryService: hello-kubernetes-canary-test 
+      stableService: hello-kubernetes-stable-test
+      trafficRouting:
+        nginx:
+          stableIngress: {{ .Values.ingress.name }}
       steps:
       - setWeight: 30
       - pause: {duration: 30s}
