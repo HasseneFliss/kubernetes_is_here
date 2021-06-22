@@ -114,7 +114,7 @@ jobs:
          run: sed -i -e "s/\(.\{4\}\).*/\1/g" configuration/canary/values.yaml
 
        - name: Replace image in config
-         run: sed -i -e "s/tag:.\{0\}/&  ${{ github.sha }}"/g configuration/canary/values.yaml
+         run: echo "tag:${{ github.sha }}" | sed "s/\(tag\):\([a-z0-9]*\)/\1:\ \2/g" configuration/canary/values.yaml
  
          
 
