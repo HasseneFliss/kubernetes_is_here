@@ -110,7 +110,7 @@ jobs:
        - name: ls stage
          run: cat configuration/canary/values.yaml
 
-       #- name: remove old tag
+       #- name: remove old tag#
        #  run: sed -i -e "s/\(.\{4\}\).*/\1/g" configuration/canary/values.yaml
 
        - name: Replace image in config
