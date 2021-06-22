@@ -110,7 +110,7 @@ jobs:
        - name: ls stage
          run: cat configuration/canary/values.yaml
 
-       #- name: Replace image in config
+       #- name: Replace image in configg
        #  run: sed -i -e "s/tag:.\{0\}/&  ${{ github.sha }}"/g" configuration/canary/values.yaml
          
        - name: Replace tag space
