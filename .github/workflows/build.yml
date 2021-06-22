@@ -117,7 +117,7 @@ jobs:
          run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
 
        - name: ls stage 
-         run: cat configuration/canary/values.yaml 
+         run: cat configuration/canary/values.yaml  
 
        - name: update file and push to remote
          run: |
