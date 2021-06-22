@@ -43,7 +43,7 @@ securityContext: {}
 
 service:
   name1: hello-kubernetes-stable-test
-  type1: ClusterIP
+  type1: LoadBalancer
   name2: hello-kubernetes-canary-test
   type2: ClusterIP
   port: 80
