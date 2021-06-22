@@ -110,13 +110,11 @@ jobs:
        - name: ls stage
          run: cat configuration/canary/values.yaml
 
-       #- name: remove old tag
-       #  run: sed -i -e "s/\(.\{4\}\).*/\1/g" configuration/canary/values.yaml
-
-       - name: Replace image in config
-         run: sed "s/\(tag\):\([a-z0-9]*\)/\1:\ \2/g" configuration/canary/values.yaml
- 
+       #- name: Replace image in config
+       #  run: sed -i -e "s/tag:.\{0\}/&  ${{ github.sha }}"/g" configuration/canary/values.yaml
          
+       - name: Replace tag space
+         run: sed -i -e "s/tag:.*$/tag:\ \${{ github.sha }}"/g" configuration/canary/values.yaml
 
        - name: ls stage 
          run: cat configuration/canary/values.yaml
