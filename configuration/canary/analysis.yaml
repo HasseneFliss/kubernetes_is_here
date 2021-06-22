@@ -4,7 +4,7 @@ metadata:
   name: webcheck
 spec:
   args:
-  - name: host
+  - name: hello-kubernetes
   metrics:
   - name: webcheck
     failureLimit: 1
