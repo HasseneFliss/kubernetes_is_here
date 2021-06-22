@@ -4,14 +4,14 @@ metadata:
   name: hello-kubernetes
 spec:
   replicas: {{ .Values.replicaCount }}
+  args:
+  - name: host
+    value: hello-kubernetes
   strategy:
     canary:
       analysis:
         templates:
         - templateName: webcheck
-      args:
-      - name: host
-        value: hello-kubernetes
       canaryService: hello-kubernetes-canary-test 
       stableService: hello-kubernetes-stable-test
       trafficRouting:
