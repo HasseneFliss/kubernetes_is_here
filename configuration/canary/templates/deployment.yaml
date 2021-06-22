@@ -11,6 +11,12 @@ spec:
       trafficRouting:
         nginx:
           stableIngress: {{ .Values.ingress.name }}
+      analysis:
+        templates:
+        - templateName: webcheck
+      args:
+      - name: host
+        value: hello-kubernetes
       steps:
       - setWeight: 30
       - pause: {duration: 30s}
