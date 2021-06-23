@@ -112,7 +112,7 @@ jobs:
        #  run: sed -i -e "s/tag:.\{0\}/&  ${{ github.sha }}"/g" configuration/canary/values.yaml
          
        - name: Replace tag space in dev environment
-         if: contains(github.ref, 'master') && contains(github.ref, 'feature')
+         if: contains(github.ref, 'master') || contains(github.ref, 'feature')
          run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
 
        - name: Replace tag space in stg environment
