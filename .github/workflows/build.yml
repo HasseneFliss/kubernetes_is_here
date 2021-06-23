@@ -120,7 +120,12 @@ jobs:
          run: sed -i -e 's/tag:.*/tag:\ stg/g' configuration/canary-stg/values.yaml
 
        - name: ls stage 
+         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
          run: cat configuration/canary-stg/values.yaml  
+
+       - name: ls stage 
+         if: contains(github.ref, 'master') && contains(github.ref, 'feature')
+         run: cat configuration/canary/values.yaml  
 
        - name: update file and push to remote
          run: | 
