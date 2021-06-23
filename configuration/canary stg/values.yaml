@@ -6,15 +6,15 @@ replicaCount: 1
 
 strategy:
   canary:
-    canaryService: hello-kubernetes-canary-test
-    stableService: hello-kubernetes-stable-test
+    canaryService: hello-kubernetes-canary-stg
+    stableService: hello-kubernetes-stable-stg
 
 name: hello-kubernetes
 
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
-  tag: 2c7f43ec1805271fea9ae96b7789c8d7ad081ef4
+  tag: 6e9693fc0cb3c0a48881c42490f37b2ed38a1136
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -42,21 +42,21 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  name1: hello-kubernetes-stable-test
+  name1: hello-kubernetes-stable-stg
   type1: LoadBalancer
-  name2: hello-kubernetes-canary-test
+  name2: hello-kubernetes-canary-stg
   type2: ClusterIP
   port: 80
 
 ingress:
-  name: hello-kubernetes-stable 
+  name: hello-kubernetes-stable-stg
   enabled: true
   className: ""
   annotations: {}
   kubernetes.io/ingress.class: nginx
      #kubernetes.io/tls-acme: "true"
   hosts:
-    - host: hello-kubernetes.com
+    - host: hello-kubernetes-stg.com
       paths:
         - path: /test
           pathType: ImplementationSpecific
