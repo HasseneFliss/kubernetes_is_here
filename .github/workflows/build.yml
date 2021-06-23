@@ -59,7 +59,7 @@ jobs:
          run: cat $GITHUB_ENV
               
        - name:  set name
-         if: contains(github.ref, 'master')
+         if: contains(github.ref, 'master') || contains(github.head_ref,'master')
          run: echo "TAG= `echo ${GITHUB_SHA}| cut -c 8-`" >> $GITHUB_ENV
        - name: see tag
          run: cat $GITHUB_ENV
@@ -76,7 +76,7 @@ jobs:
          run: echo $GITHUB_ENV
              
        - name: Build and push dev
-         if: contains(github.ref, 'feature') && contains(github.ref, 'master')
+         if: (contains(github.ref, 'feature') && contains(github.ref, 'master')) || contains(github.head_ref,'master')
          id: docker_build
          uses: docker/build-push-action@v2
          with:
@@ -88,14 +88,14 @@ jobs:
                         SHORT_SHA=${{ env.SHORT_SHA }}
 
        - name: build and push stg
-         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          id: docker_build-2
-         uses: docker/build-push-action@v2
+         uses: docker/build-push-action@v2  
          with:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:stg
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}-rc
            build-args: |
                         TAG={{ env.SHORT_SHA }}
            
