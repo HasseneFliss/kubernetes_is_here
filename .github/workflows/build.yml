@@ -115,7 +115,7 @@ jobs:
 
        - name: Replace tag space in stg environment
          if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
-         run: sed -i -e 's/tag:.*/tag:\ stg/g' configuration/canary-stg/values.yaml　
+         run: sed -i -e 's/tag:.*/tag:\ 9999/g' configuration/canary-stg/values.yaml　
 
        - name: ls stg stage 
          if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
