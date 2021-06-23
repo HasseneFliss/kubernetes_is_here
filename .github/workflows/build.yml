@@ -111,20 +111,23 @@ jobs:
        #- name: Replace image in config
        #  run: sed -i -e "s/tag:.\{0\}/&  ${{ github.sha }}"/g" configuration/canary/values.yaml
          
-       - name: Replace tag space in dev environment
-         if: contains(github.ref, 'master') || contains(github.ref, 'feature')
-         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
+       
 
        - name: Replace tag space in stg environment
          if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
-         run: sed -i -e 's/tag:.*/tag:\ stg/g' configuration/canary-stg/values.yaml
+         run: sed -i -e 's/tag:.*/tag:\ stg/g' configuration/canary-stg/values.yaml　
 
        - name: ls stage 
          if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
          run: cat configuration/canary-stg/values.yaml  
 
+
+       - name: Replace tag space in dev environment
+         if: contains(github.ref, 'master') || contains(github.ref, 'feature')
+         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
+
        - name: ls stage 
-         if: contains(github.ref, 'master') && contains(github.ref, 'feature')
+         if: contains(github.ref, 'master') || contains(github.ref, 'feature')
          run: cat configuration/canary/values.yaml  
 
        - name: update file and push to remote
