@@ -76,7 +76,7 @@ jobs:
          run: echo $GITHUB_ENV
              
        - name: Build and push dev
-         if: contains(github.ref, 'feature')
+         if: contains(github.ref, 'feature' or 'master')
          id: docker_build
          uses: docker/build-push-action@v2
          with:
@@ -87,20 +87,7 @@ jobs:
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
 
-
-
-       - name: build and push stg
-         if: contains(github.ref, 'master')
-         id: docker_build-2
-         uses: docker/build-push-action@v2
-         with:
-           context: ./
-           file: ./application/Dockerfile
-           push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}
-           build-args: |
-                        TAG={{ env.SHORT_SHA }}
-           
+                  
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
 
