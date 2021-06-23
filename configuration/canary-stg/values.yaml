@@ -8,7 +8,7 @@ strategy:
   canary:
     canaryService: hello-kubernetes-canary-stg
     stableService: hello-kubernetes-stable-stg
-
+ 
 name: hello-kubernetes-stg
 
 image:
