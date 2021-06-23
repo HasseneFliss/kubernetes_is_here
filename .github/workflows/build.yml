@@ -90,7 +90,7 @@ jobs:
        - name: build and push stg
          if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          id: docker_build-2
-         uses: docker/build-push-action@v2
+         uses: docker/build-push-action@v2  
          with:
            context: ./
            file: ./application/Dockerfile
