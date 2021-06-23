@@ -120,7 +120,7 @@ jobs:
          run: sed -i -e 's/tag:.*/tag:\ "stg"/g' configuration/canary-stg/values.yaml
 
        - name: ls stage 
-         run: cat configuration/canary stg/values.yaml  
+         run: cat configuration/canary-stg/values.yaml  
 
        - name: update file and push to remote
          run: | 
