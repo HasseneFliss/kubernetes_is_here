@@ -14,7 +14,7 @@ name: hello-kubernetes
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
-  tag: "latest"
+  tag: latest
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
