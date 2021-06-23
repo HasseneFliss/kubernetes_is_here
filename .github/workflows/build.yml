@@ -76,7 +76,7 @@ jobs:
          run: echo $GITHUB_ENV
              
        - name: Build and push dev
-         if: contains(github.ref, 'feature')
+         if: contains(github.ref, 'feature') && contains(github.ref, 'master)
          id: docker_build
          uses: docker/build-push-action@v2
          with:
@@ -111,11 +111,16 @@ jobs:
        #- name: Replace image in config
        #  run: sed -i -e "s/tag:.\{0\}/&  ${{ github.sha }}"/g" configuration/canary/values.yaml
          
-       - name: Replace tag space
+       - name: Replace tag space in dev environment
+         if: contains(github.ref, 'master') && contains(github.ref, 'feature')
          run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
 
+       - name: Replace tag space in stg environment
+         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
+         run: sed -i -e 's/tag:.*/tag:\ stg/g' configuration/canary stg/values.yaml
+
        - name: ls stage 
-         run: cat configuration/canary/values.yaml  
+         run: cat configuration/canary stg/values.yaml  
 
        - name: update file and push to remote
          run: |
