@@ -76,7 +76,7 @@ jobs:
          run: echo $GITHUB_ENV
              
        - name: Build and push dev
-         if: contains(github.ref, 'feature' or 'master')
+         if: contains(github.ref, 'feature' ) or contains(github.ref, 'master' )
          id: docker_build
          uses: docker/build-push-action@v2
          with:
@@ -87,7 +87,8 @@ jobs:
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
 
-                  
+       
+           
        - name: Image digest
          run: echo ${{ steps.docker_build.outputs.digest }}
 
