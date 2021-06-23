@@ -103,9 +103,9 @@ jobs:
          run: echo ${{ steps.docker_build.outputs.digest }}
 
        - name: ls
-         run: ls -la
+         run: ls -la    
 
-       - name: ls stage
+       - name: ls stage 
          run: cat configuration/canary/values.yaml
 
        #- name: Replace image in config
