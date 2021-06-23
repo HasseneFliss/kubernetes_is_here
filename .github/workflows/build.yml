@@ -117,20 +117,33 @@ jobs:
          if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
          run: sed -i -e 's/tag:.*/tag:\ stg/g' configuration/canary-stg/values.yaml　
 
-       - name: ls stage 
+       - name: ls stg stage 
          if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
          run: cat configuration/canary-stg/values.yaml  
+
+       - name: update file and push to remote
+         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
+         run: | 
+          echo "Test push commit to the remote in the workflow" >> test.txt 
+
+          git config --global user.name "HasseneFliss"
+          git config --global user.email "hassene.fliss25@gmail.com"
+
+          git add -A
+          git commit -m "Update testfile.txt"
+          git push 
 
 
        - name: Replace tag space in dev environment
          if: contains(github.ref, 'master') || contains(github.ref, 'feature')
          run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
 
-       - name: ls stage 
+       - name: ls dev stage 
          if: contains(github.ref, 'master') || contains(github.ref, 'feature')
          run: cat configuration/canary/values.yaml  
 
-       - name: update file and push to remote
+       - name: update file and push to remote dev
+         if: contains(github.ref, 'master') || contains(github.ref, 'feature')
          run: | 
           echo "Test push commit to the remote in the workflow" >> test.txt 
 
