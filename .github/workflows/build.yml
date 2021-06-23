@@ -114,15 +114,15 @@ jobs:
          run: ls -la  
 
        - name: Replace tag space in stg environment
-         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
-         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary-stg/values.yaml
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
+         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-rc/g' configuration/canary-stg/values.yaml
 
        - name: ls stg stage 
-         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          run: cat configuration/canary-stg/values.yaml  
 
        - name: update file and push to remote
-         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          run: | 
           echo "Test push commit to the remote in the workflow" >> test.txt 
 
@@ -136,7 +136,7 @@ jobs:
 
        - name: Replace tag space in dev environment
          if: contains(github.ref, 'master') || contains(github.ref, 'feature')
-         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
+         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-rc/g' configuration/canary/values.yaml
 
        - name: ls dev stage 
          if: contains(github.ref, 'master') || contains(github.ref, 'feature')

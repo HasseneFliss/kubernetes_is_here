@@ -14,7 +14,7 @@ name: hello-kubernetes-stg
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
-  tag: 764fa1b0070f7df5819946cca241fdb366214bb5
+  tag: eee817ff40c89b6ce058f4d2740a2c8ce8b01980-rc
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
