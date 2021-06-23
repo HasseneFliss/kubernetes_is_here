@@ -7,7 +7,7 @@ metadata:
     keel.sh/policy: force
     keel.sh/trigger: poll  
   annotations:   
-    keel.sh/pollSchedule: "@every 2s"
+    keel.sh/pollSchedule: "@every 3s"
 spec:   
   replicas: 1 
   strategy:
