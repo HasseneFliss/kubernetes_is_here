@@ -8,13 +8,13 @@ strategy:
   canary:
     canaryService: hello-kubernetes-canary-stg
     stableService: hello-kubernetes-stable-stg
-
-name: hello-kubernetes
+ 
+name: hello-kubernetes-stg
 
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
-  tag: latest
+  tag: "stg"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
