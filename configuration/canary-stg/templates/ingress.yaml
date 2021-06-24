@@ -13,5 +13,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: {{ .Values.service.name1 }}
+          serviceName: {{ .Values.service.name1 }} 
           servicePort: {{ .Values.service.port }}
