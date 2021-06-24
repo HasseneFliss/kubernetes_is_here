@@ -1,17 +1,32 @@
 
-apiVersion: networking.k8s.io/v1beta1
+##kind: Ingress
+#metadata:
+#  name: {{ .Values.ingress.name }}
+#  annotations:
+#    kubernetes.io/ingress.class: nginx
+#    namespace: ingress-basic
+#spec:
+#  rules:
+#  - host: hello-kubernetes-stg.com 
+#    http:
+#      paths:
+#      - path: /
+#        backend:
+#          serviceName: {{ .Values.service.name1 }} 
+#          servicePort: {{ .Values.service.port }}
+
+
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Values.ingress.name }}
+  name: hello-kubernetes-stable-stg
   annotations:
     kubernetes.io/ingress.class: nginx
-    namespace: canary-deployment-stg
 spec:
   rules:
-  - host: hello-kubernetes-stg.com 
+  - host: nginx.extdns.ryaneschinger.com
     http:
       paths:
-      - path: /
-        backend:
-          serviceName: {{ .Values.service.name1 }} 
-          servicePort: {{ .Values.service.port }}
+      - backend:
+          serviceName: hello-kubernetes-stable-stg
+          servicePort: 80
