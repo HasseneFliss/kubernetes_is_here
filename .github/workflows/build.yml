@@ -145,7 +145,6 @@ jobs:
        - name: update file and push to remote dev
          if: contains(github.ref, 'master') || contains(github.ref, 'feature')
          run: | 
-          echo "Test push commit to the remote in the workflow" >> test.txt 
 
           git config --global user.name "HasseneFliss"
           git config --global user.email "hassene.fliss25@gmail.com"
