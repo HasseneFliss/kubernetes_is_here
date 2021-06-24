@@ -135,15 +135,15 @@ jobs:
 
 
        - name: Replace tag space in dev environment
-         if: contains(github.ref, 'master') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
          run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-dev/g' configuration/canary/values.yaml
 
        - name: ls dev stage 
-         if: contains(github.ref, 'master') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
          run: cat configuration/canary/values.yaml  
 
        - name: update file and push to remote dev
-         if: contains(github.ref, 'master') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
          run: | 
 
           git config --global user.name "HasseneFliss"
