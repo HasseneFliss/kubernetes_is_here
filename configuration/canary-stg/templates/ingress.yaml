@@ -17,8 +17,6 @@ spec:
           serviceName: {{ .Values.service.name1 }} 
           servicePort: {{ .Values.service.port }}
     tls:
-  - hosts:
-    - hello-kubernetes-stg.com
     secretName: argocd-secret
 
 
