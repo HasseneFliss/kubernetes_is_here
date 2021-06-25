@@ -9,7 +9,7 @@ metadata:
 spec:
   rules:
   - host: hello-kubernetes-stg.com 
-    https:
+    http:
       paths:
       - path: 
         backend:
