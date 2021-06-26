@@ -50,7 +50,6 @@ jobs:
            DOCKER_PASS: ${{ secrets.DOCKER_HUB_PASSWORD }}
          run: | 
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-
        
        - name: Add SHORT_SHA env property with commit short sha
          if: contains(github.ref, 'feature')
@@ -67,8 +66,6 @@ jobs:
        - name: Set up Docker Buildx
          run: | 
             docker build . -f application/Dockerfile
-
-
        - name: see ref name
          run: echo ${{github.ref}} 
 
@@ -86,7 +83,6 @@ jobs:
            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}-dev
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
-
        - name: build and push stg
          if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          id: docker_build-2
@@ -123,6 +119,9 @@ jobs:
 
        - name: update file and push to remote
          if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
+
+         run: | 
+
          run: | 
 
           git config --global user.name "HasseneFliss"
@@ -145,11 +144,27 @@ jobs:
        - name: update file and push to remote dev
          if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
          run: | 
-
           git config --global user.name "HasseneFliss"
           git config --global user.email "hassene.fliss25@gmail.com"
-
           git add -A
           git commit -m "Update testfile.txt"
           git push 
+       - name: Replace tag space in dev environment
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-dev/g' configuration/canary/values.yaml
+
+       - name: ls dev stage 
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         run: cat configuration/canary/values.yaml  
+
+       - name: update file and push to remote dev
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         run: | 
+          git config --global user.name "HasseneFliss"
+          git config --global user.email "hassene.fliss25@gmail.com"
+          git add -A
+          git commit -m "Update testfile.txt"
+          git push 
+
        
+
