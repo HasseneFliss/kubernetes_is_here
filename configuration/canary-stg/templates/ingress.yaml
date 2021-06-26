@@ -8,7 +8,7 @@ spec:
   tls:
   - hosts:
     - hello-kubernetes.stg.com
-    secretName: example-app-6jq7v
+    secretName: hello-kubernetes.tls
   rules:
   - host: hello-kubernetes-stg.com  
     http:
