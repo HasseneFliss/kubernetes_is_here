@@ -14,7 +14,7 @@ name: hello-kubernetes
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
-  tag: 6664f3ec108e963686155b17088e9b50dd63948d-dev
+  tag: cb88fad04fbb4887e9a29809555b3a3e3b264394-dev
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
