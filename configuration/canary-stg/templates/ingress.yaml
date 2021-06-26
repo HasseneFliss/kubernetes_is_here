@@ -10,7 +10,7 @@ spec:
     - hello-kubernetes.stg.com
     secretName: hello-kubernetes.stg.tls
   rules:
-  - host: hello-kubernetes-stg.com 
+  - host: hello-kubernetes-stg.com  
     http:
       paths:
       - path: 
