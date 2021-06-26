@@ -10,7 +10,7 @@ on:
       - master
       - 'tag/**'
       - 'feature/**'
-
+      - 'dev/**'
   pull_request:
     branches: [ master ]
 
@@ -50,7 +50,6 @@ jobs:
            DOCKER_PASS: ${{ secrets.DOCKER_HUB_PASSWORD }}
          run: | 
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-
        
        - name: Add SHORT_SHA env property with commit short sha
          if: contains(github.ref, 'feature')
@@ -59,7 +58,7 @@ jobs:
          run: cat $GITHUB_ENV
               
        - name:  set name
-         if: contains(github.ref, 'master')
+         if: contains(github.ref, 'feature') || contains(github.head_ref,'master')
          run: echo "TAG= `echo ${GITHUB_SHA}| cut -c 8-`" >> $GITHUB_ENV
        - name: see tag
          run: cat $GITHUB_ENV
@@ -67,8 +66,6 @@ jobs:
        - name: Set up Docker Buildx
          run: | 
             docker build . -f application/Dockerfile
-
-
        - name: see ref name
          run: echo ${{github.ref}} 
 
@@ -76,26 +73,25 @@ jobs:
          run: echo $GITHUB_ENV
              
        - name: Build and push dev
-         if: contains(github.ref, 'feature') && contains(github.ref, 'master')
+         if: (contains(github.ref, 'feature') || contains(github.ref, 'dev')) || contains(github.head_ref,'master')
          id: docker_build
          uses: docker/build-push-action@v2
          with:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}-dev
            build-args: |
                         SHORT_SHA=${{ env.SHORT_SHA }}
-
        - name: build and push stg
-         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          id: docker_build-2
-         uses: docker/build-push-action@v2
+         uses: docker/build-push-action@v2  
          with:
            context: ./
            file: ./application/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:stg
+           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-kubernetes:${{ github.sha }}-rc
            build-args: |
                         TAG={{ env.SHORT_SHA }}
            
@@ -103,32 +99,45 @@ jobs:
          run: echo ${{ steps.docker_build.outputs.digest }}
 
        - name: ls
-         run: ls -la
+         run: ls -la    
 
-       - name: ls stage
-         run: cat configuration/canary/values.yaml
+       - name: ls stage 
+         run: cat configuration/canary-stg/values.yaml
 
        #- name: Replace image in config
        #  run: sed -i -e "s/tag:.\{0\}/&  ${{ github.sha }}"/g" configuration/canary/values.yaml
-         
-       - name: Replace tag space in dev environment
-         if: contains(github.ref, 'master') && contains(github.ref, 'feature')
-         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}/g' configuration/canary/values.yaml
+       - name: ls
+         run: ls -la  
 
        - name: Replace tag space in stg environment
-         if: contains(github.ref, 'tag') && contains(github.ref, '-rc')
-         run: sed -i -e 's/tag:.*/tag:\ stg/g' configuration/canary-stg/values.yaml
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
+         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-rc/g' configuration/canary-stg/values.yaml
 
-       - name: ls stage 
+       - name: ls stg stage 
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          run: cat configuration/canary-stg/values.yaml  
 
        - name: update file and push to remote
+         if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
          run: | 
-
           git config --global user.name "HasseneFliss"
           git config --global user.email "hassene.fliss25@gmail.com"
-
           git add -A
-          git commit -m "Update test.txt"
+          git commit -m "Update testfile.txt"
           git push 
-       
+       - name: Replace tag space in dev environment
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-dev/g' configuration/canary/values.yaml
+
+       - name: ls dev stage 
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         run: cat configuration/canary/values.yaml  
+
+       - name: update file and push to remote dev
+         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
+         run: | 
+          git config --global user.name "HasseneFliss"
+          git config --global user.email "hassene.fliss25@gmail.com"
+          git add -A
+          git commit -m "Update testfile.txt"
+          git push 
