@@ -130,5 +130,5 @@ jobs:
 
           git add -A
           git commit -m "Update test.txt"
-          git push -f origin master
+          git push 
        
