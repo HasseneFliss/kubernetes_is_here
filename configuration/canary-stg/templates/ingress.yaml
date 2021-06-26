@@ -1,16 +1,36 @@
-
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ .Values.ingress.name }}
   annotations:
     kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-cluster-issuer"
 spec:
+  #tls:
+  #- hosts:
+  #  - hello-kubernetes-stg.com 
+  #  secretName: example-app-tls
   rules:
-  - host: hello-kubernetes-stg.com
+  - host: hello-kubernetes-stg.com  
     http:
       paths:
-      - path:
+      - path: 
         backend:
-          serviceName: {{ .Values.service.name1 }}
+          serviceName: {{ .Values.service.name1 }} 
           servicePort: {{ .Values.service.port }}
+
+
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: hello-kubernetes-stable-stg
+#  annotations:
+#    kubernetes.io/ingress.class: nginx
+#spec:
+#  rules:
+#  - host: hello-kubernetes-stg.com 
+#    http:
+#      paths:
+#      - backend:
+#          serviceName: hello-kubernetes-stable-stg
+#          servicePort: 80
