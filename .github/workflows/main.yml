@@ -35,8 +35,9 @@ jobs:
          
       - name: downloand argocli
         run: |
-            curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest download/argocd-linux-amd64 
-
+          VERSION=<TAG> # Select desired TAG from https://github.com/argoproj/argo-cd/releases
+          curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-linux-amd64
+          chmod +x /usr/local/bin/argocd
       # Runs a set of commands using the runners shell
       - name: chmod files
         run: |
