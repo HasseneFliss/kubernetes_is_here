@@ -12,7 +12,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    
+env:
+  CLUSTER_NAME: avaxia-cluster
+  RESOURCE_GROUP: MC_avaxiaaks_hassene-cluster_japanwest
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -24,13 +28,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
 
       # Runs a single command using the runners shell
       - name: install curl
         run: |
            sudo apt update
-           sudo apt install curl
-           
+           sudo apt install curl     
            
          
       - name: downloand argocli
@@ -40,6 +44,13 @@ jobs:
       - name: chmod files
         run: |
             ls -la
+            
+            
+      - uses: Azure/aks-set-context@v1
+        with:
+           creds: '${{ secrets.AZURE_CREDENTIALS }}'
+           cluster-name: '${{ env.avaxia-cluster }}'
+           resource-group: '${{ env.RESOURCE_GROUP }}'
           
             
       - name: run the backup
