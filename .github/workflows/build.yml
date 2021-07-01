@@ -122,8 +122,6 @@ jobs:
 
          run: | 
 
-         run: | 
-
           git config --global user.name "HasseneFliss"
           git config --global user.email "hassene.fliss25@gmail.com"
 
