@@ -120,7 +120,8 @@ jobs:
        - name: update file and push to remote
          if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
 
-         run: |
+         run: | 
+
 
           git config --global user.name "HasseneFliss"
           git config --global user.email "hassene.fliss25@gmail.com"
