@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. 
@@ -128,8 +127,6 @@ jobs:
           git add -A
           git commit -m "Update testfile.txt"
           git push 
-
-
 
        - name: Replace tag space in dev environment
          if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
