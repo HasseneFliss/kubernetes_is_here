@@ -122,9 +122,9 @@ jobs:
 
          run: | 
 
+
           git config --global user.name "HasseneFliss"
           git config --global user.email "hassene.fliss25@gmail.com"
-
           git add -A
           git commit -m "Update testfile.txt"
           git push 
@@ -145,22 +145,6 @@ jobs:
           git add -A
           git commit -m "Update testfile.txt"
           git push 
-       - name: Replace tag space in dev environment
-         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
-         run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-dev/g' configuration/canary/values.yaml
-
-       - name: ls dev stage 
-         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
-         run: cat configuration/canary/values.yaml  
-
-       - name: update file and push to remote dev
-         if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
-         run: | 
-          git config --global user.name "HasseneFliss"
-          git config --global user.email "hassene.fliss25@gmail.com"
-          git add -A
-          git commit -m "Update testfile.txt"
-          git push 
-
+       
        
 
