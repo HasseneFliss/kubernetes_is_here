@@ -129,8 +129,6 @@ jobs:
           git commit -m "Update testfile.txt"
           git push 
 
-
-
        - name: Replace tag space in dev environment
          if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
          run: sed -i -e 's/tag:.*/tag:\ ${{ github.sha }}-dev/g' configuration/canary/values.yaml
