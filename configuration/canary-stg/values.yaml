@@ -18,12 +18,6 @@ image:
 
   tag: 08ebae3c09258d77317e3500f29d2dd5a8e37a52-rc
 
-  tag: 08ebae3c09258d77317e3500f29d2dd5a8e37a52-rc
-
-  tag: 08ebae3c09258d77317e3500f29d2dd5a8e37a52-rc
-
-  tag: 08ebae3c09258d77317e3500f29d2dd5a8e37a52-rc
-
 
 imagePullSecrets: []
 nameOverride: ""
