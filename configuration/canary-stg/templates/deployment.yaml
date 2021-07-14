@@ -3,6 +3,7 @@ kind: Rollout
 metadata:
   name: hello-kubernetes-stg
 spec:
+  revisionHistoryLimit: 1
   replicas: {{ .Values.replicaCount }}
   strategy:
     canary:
