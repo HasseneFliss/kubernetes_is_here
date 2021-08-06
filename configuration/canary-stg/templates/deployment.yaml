@@ -63,5 +63,5 @@ spec:
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
-        url: "http://hello-kubernetes-stg.com"
+        url: http://hello-kubernetes-stg.com
         jsonPath: "{$.status}"
