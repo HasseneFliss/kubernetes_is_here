@@ -17,13 +17,13 @@ image:
   pullPolicy: Always
 
 
-  tag: 3cf7801f189a5256666475bc5432f19080355e18-rc
+  tag: 4f59ddb81d689da5a4b1651d359399c73fc4bd31-rc
 
-  tag: 3cf7801f189a5256666475bc5432f19080355e18-rc
+  tag: 4f59ddb81d689da5a4b1651d359399c73fc4bd31-rc
 
-  tag: 3cf7801f189a5256666475bc5432f19080355e18-rc
+  tag: 4f59ddb81d689da5a4b1651d359399c73fc4bd31-rc
 
-  tag: 3cf7801f189a5256666475bc5432f19080355e18-rc
+  tag: 4f59ddb81d689da5a4b1651d359399c73fc4bd31-rc
 
 
 imagePullSecrets: []
@@ -117,7 +117,7 @@ name: hello-kubernetes
 image:
   repository: hassenefl/hello-kubernetes
   pullPolicy: Always
-  tag: f1276b648dbb313ee69a8c3a9f3b60fe1eb3a71e-dev
+  tag: 4f59ddb81d689da5a4b1651d359399c73fc4bd31-rc
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
