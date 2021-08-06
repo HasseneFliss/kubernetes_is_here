@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. 
@@ -120,15 +119,14 @@ jobs:
        - name: update file and push to remote
          if: (contains(github.ref, 'tag') && contains(github.ref, '-rc')) || contains(github.head_ref,'master')
 
-         run: |
+         run: | 
+
 
           git config --global user.name "HasseneFliss"
           git config --global user.email "hassene.fliss25@gmail.com"
           git add -A
           git commit -m "Update testfile.txt"
           git push 
-
-
 
        - name: Replace tag space in dev environment
          if: contains(github.ref, 'dev') || contains(github.ref, 'feature') || contains(github.head_ref,'master')
