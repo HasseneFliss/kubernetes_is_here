@@ -1,4 +1,3 @@
-
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
@@ -10,6 +9,9 @@ spec:
       analysis:
         templates:
         - templateName: webcheck
+        args:
+        - name: host
+          value: hello-kuebernetes-stg.com  
       canaryService: hello-kubernetes-canary-stg 
       stableService: hello-kubernetes-stable-stg
       trafficRouting:
