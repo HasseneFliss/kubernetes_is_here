@@ -58,10 +58,10 @@ spec:
   - name: webcheck
     failureLimit: 1
     successCondition: result == "ok"
-    interval: 60s
+    interval: 30s
     count: 5
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
-        url: "http://hello-kubernetes-stg.com/"
+        url: http://hello-kubernetes-stg.com/
         jsonPath: "{$.status}"
