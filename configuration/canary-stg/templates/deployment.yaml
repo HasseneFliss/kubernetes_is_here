@@ -57,8 +57,9 @@ spec:
   metrics:
   - name: webcheck
     failureLimit: 1
-    interval: 60s
     successCondition: result == "ok"
+    interval: 60s
+    count: 5
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
