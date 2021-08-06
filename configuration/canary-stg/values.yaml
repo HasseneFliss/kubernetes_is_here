@@ -17,7 +17,7 @@ image:
   pullPolicy: Always
 
 
-  tag: fbf9b2223e712186bc0b6d701cba96305a95a6be-rc
+  tag: fbf9b2223e712186bc0b6d701cba96305a95a6bh-rc
 
 imagePullSecrets: []
 nameOverride: ""
