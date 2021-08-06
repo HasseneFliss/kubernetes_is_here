@@ -11,7 +11,7 @@ spec:
         - templateName: webcheck
         args:
         - name: host
-          value: hello-kuebernetes-stg.com  
+          value: hello-kubernetes-stable-stg
       canaryService: hello-kubernetes-canary-stg 
       stableService: hello-kubernetes-stable-stg
       trafficRouting:
