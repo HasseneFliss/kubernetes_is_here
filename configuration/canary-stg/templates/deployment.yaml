@@ -57,7 +57,7 @@ spec:
   metrics:
   - name: webcheck
     failureLimit: 1
-    interval: "1"
+    interval: "1s"
     successCondition: result == "ok"
     provider:
       web:
