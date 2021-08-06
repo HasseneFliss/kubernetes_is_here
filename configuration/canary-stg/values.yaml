@@ -18,7 +18,7 @@ image:
 
 
 
-tag: 58987843d4a929f9516499e70c143e0bd0fb98f9-rc
+tag: 82a69219dd6ac9f3d77e3fccbd0057128620fe87-rc
 
 imagePullSecrets: []
 nameOverride: ""
