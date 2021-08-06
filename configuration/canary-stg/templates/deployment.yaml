@@ -7,6 +7,9 @@ spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
     canary:
+      analysis:
+        templates:
+        - templateName: ./webcheck
       canaryService: hello-kubernetes-canary-stg 
       stableService: hello-kubernetes-stable-stg
       trafficRouting:
