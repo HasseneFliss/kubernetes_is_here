@@ -40,23 +40,3 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
----              
-apiVersion: argoproj.io/v1alpha1
-kind: AnalysisTemplate
-metadata:
-  name: webcheck
-spec:
-  args:
-  - name: host
-    value: hello-kubernetes-stg.com
-  metrics:
-  - name: webcheck
-    failureLimit: 1
-    interval: "3"
-    successCondition: result == "ok"
-    provider:
-      web:
-        # paceholders are resolved when an AnalysisRun is created
-        url: "http://{{args.host}}/"
-        jsonPath: "{$.status}"
-      
