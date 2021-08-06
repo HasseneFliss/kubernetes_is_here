@@ -10,7 +10,8 @@ spec:
         templates:
         - templateName: webcheck
       args:
-      - name: hello-kubernetes-stg.com
+      - name: host
+        value: hello-kubernetes-stg.com
       canaryService: hello-kubernetes-canary-stg 
       stableService: hello-kubernetes-stable-stg
       trafficRouting:
@@ -52,7 +53,8 @@ metadata:
   name: webcheck
 spec:
   args:
-  - name: hello-kubernetes-stg.com
+  - name: host
+    value: hello-kubernetes-stg.com
   metrics:
   - name: webcheck
     failureLimit: 1
@@ -61,5 +63,5 @@ spec:
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
-        url: "http://{{args.name}}/"
+        url: "http://{{args.host}}/"
         jsonPath: "{$.status}"
