@@ -59,7 +59,7 @@ spec:
     failureLimit: 1
     successCondition: result == "ok"
     interval: 30s
-    count: 5
+    count: 3
     provider:
       web:
         # paceholders are resolved when an AnalysisRun is created
